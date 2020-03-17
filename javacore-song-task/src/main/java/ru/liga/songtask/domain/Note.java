@@ -1,6 +1,9 @@
 package ru.liga.songtask.domain;
 
+import com.leff.midi.MidiFile;
 import com.leff.midi.event.NoteOn;
+import com.leff.midi.event.meta.Tempo;
+import ru.liga.songtask.util.SongUtils;
 
 /**
  * Created by bshestakov on 13.07.2017.
