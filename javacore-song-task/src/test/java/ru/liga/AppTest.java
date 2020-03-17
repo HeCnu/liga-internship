@@ -43,14 +43,14 @@ public class AppTest
     @Test
     public void consoleArgs_WhenArgsListNotEmpty_WreckingBall() throws IOException {
         System.out.println("main");
-        String[] args = {"E:\\Wrecking Ball.mid", "analyze"};
+        String[] args = {"E:\\Belle.mid", "analyze"};
         app.main(args);
     }
 
     @Test
     public void consoleArgs_WhenArgsListNotEmptyWithTrans() throws IOException {
         System.out.println("main");
-        String[] args = {"E:\\Wrecking Ball.mid", "change", "-trans", "2"};
+        String[] args = {"E:\\Wrecking Ball.mid", "change", "-trans", "10"};
         app.main(args);
     }
 
@@ -64,7 +64,7 @@ public class AppTest
     @Test
     public void consoleArgs_WhenArgsListNotEmptyWithTransAndTempo() throws IOException {
         System.out.println("main");
-        String[] args = {"E:\\Wrecking Ball.mid", "change", "-trans", "2", "-tempo", "20"};
+        String[] args = {"E:\\Wrecking Ball.mid", "change", "-trans", "10", "-tempo", "10"};
         app.main(args);
     }
 
