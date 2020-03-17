@@ -43,7 +43,7 @@ public class AppTest
     @Test
     public void consoleArgs_WhenArgsListNotEmpty_WreckingBall() throws IOException {
         System.out.println("main");
-        String[] args = {"E:\\Belle.mid", "analyze"};
+        String[] args = {"E:\\Wrecking Ball.mid", "analyze"};
         app.main(args);
     }
 
