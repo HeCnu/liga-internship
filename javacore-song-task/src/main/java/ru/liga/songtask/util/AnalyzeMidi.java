@@ -18,8 +18,9 @@ public class AnalyzeMidi {
 
     private static Logger logger = LoggerFactory.getLogger(App.class);
 
-    public static void analizeMidiFile(MidiFile midiFile, Tempo last) {
+    public static void analizeMidiFile(MidiFile midiFile) {
         List<Note> uniqueNotes = processOfGettingUniqueNotesList(midiFile);
+        Tempo last = (Tempo) midiFile.getTracks().get(0).getEvents().last();
         searchRangeOfNotes(uniqueNotes);
         countOfNotesSameDuration(last, midiFile, uniqueNotes);
         countOfSameNotes(last, midiFile, uniqueNotes);
@@ -122,16 +123,18 @@ public class AnalyzeMidi {
         Note minNote, maxNote;
         minNote = maxNote = null;
         for (Note note: uniqueNotes) {
-            if(note.sign().getMidi() >= maxMidiNote) {
+            if (note.sign().getMidi() >= maxMidiNote) {
                 maxMidiNote = note.sign().getMidi();
                 maxNote = note;
             }
-            else {
+            if (note.sign().getMidi() < minMidiNote){
                 minMidiNote = note.sign().getMidi();
                 minNote = note;
             }
         }
-        logger.info("Upper: " + maxNote.sign().fullName()); logger.info("Bottom: " + minNote.sign().fullName()); logger.info("Range: " + (maxMidiNote - minMidiNote));
+        logger.info("Upper: " + maxNote.sign().fullName());
+        logger.info("Bottom: " + minNote.sign().fullName());
+        logger.info("Range: " + (maxMidiNote - minMidiNote));
         logger.debug("Finish function of searching range of notes");
     }
 
