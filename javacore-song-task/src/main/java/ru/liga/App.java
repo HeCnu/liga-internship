@@ -23,19 +23,18 @@ public class App {
 
         final String midiPath = args[0];
         MidiFile midiFile = new MidiFile(new FileInputStream(midiPath));
-        Tempo last = (Tempo) midiFile.getTracks().get(0).getEvents().last();
         ChangeMidi changeMidi = new ChangeMidi();
         AnalyzeMidi analyzeMidi = new AnalyzeMidi();
 
         switch (args[1]) {
             case "analyze":
                 logger.debug("Start analyze");
-                analyzeMidi.analizeMidiFile(midiFile, last);
+                analyzeMidi.analizeMidiFile(midiFile);
                 logger.debug("Finish analyze");
                 break;
             case "change":
                 logger.debug("Start changing");
-                changeMidi.changeMidiFile(midiFile, last, args);
+                changeMidi.changeMidiFile(midiFile, args);
                 logger.debug("Finish changing");
                 break;
             default:

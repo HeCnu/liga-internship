@@ -18,8 +18,9 @@ public class AnalyzeMidi {
 
     private static Logger logger = LoggerFactory.getLogger(App.class);
 
-    public static void analizeMidiFile(MidiFile midiFile, Tempo last) {
+    public static void analizeMidiFile(MidiFile midiFile) {
         List<Note> uniqueNotes = processOfGettingUniqueNotesList(midiFile);
+        Tempo last = (Tempo) midiFile.getTracks().get(0).getEvents().last();
         searchRangeOfNotes(uniqueNotes);
         countOfNotesSameDuration(last, midiFile, uniqueNotes);
         countOfSameNotes(last, midiFile, uniqueNotes);
